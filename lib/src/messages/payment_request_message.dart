@@ -81,6 +81,7 @@ class PaymentRequestMessage extends Message {
         'roomId': roomId,
         'status': status?.toShortString(),
         'amount': amount,
+        'paymentStatus': paymentStatus,
         'type': MessageType.paymentRequest.toShortString(),
       };
 
