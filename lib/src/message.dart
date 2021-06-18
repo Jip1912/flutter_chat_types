@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_chat_types/src/messages/payment_request_message.dart';
 import 'package:meta/meta.dart';
 import 'messages/custom_message.dart';
 import 'messages/file_message.dart';
@@ -9,7 +10,7 @@ import 'preview_data.dart' show PreviewData;
 import 'user.dart' show User;
 
 /// All possible message types.
-enum MessageType { custom, file, image, text, unsupported }
+enum MessageType { custom, file, image, text, paymentRequest, unsupported }
 
 /// Extension with one [toShortString] method
 extension MessageTypeToShortString on MessageType {
@@ -58,6 +59,8 @@ abstract class Message extends Equatable {
         return ImageMessage.fromJson(json);
       case 'text':
         return TextMessage.fromJson(json);
+      case 'paymentRequest':
+        return PaymentRequestMessage.fromJson(json);
       default:
         return UnsupportedMessage.fromJson(json);
     }
