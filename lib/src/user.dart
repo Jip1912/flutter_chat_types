@@ -21,6 +21,7 @@ class User extends Equatable {
     this.createdAt,
     this.firstName,
     required this.id,
+    this.email,
     this.imageUrl,
     this.lastName,
     this.lastSeen,
@@ -33,6 +34,7 @@ class User extends Equatable {
       : createdAt = json['createdAt'] as int?,
         firstName = json['firstName'] as String?,
         id = json['id'] as String,
+        email = json['email'] as String,
         imageUrl = json['imageUrl'] as String?,
         lastName = json['lastName'] as String?,
         lastSeen = json['lastSeen'] as int?,
@@ -44,6 +46,7 @@ class User extends Equatable {
         'createdAt': createdAt,
         'firstName': firstName,
         'id': id,
+        'email': email,
         'imageUrl': imageUrl,
         'lastName': lastName,
         'lastSeen': lastSeen,
@@ -61,6 +64,7 @@ class User extends Equatable {
     String? firstName,
     String? imageUrl,
     String? lastName,
+    String? email,
     int? lastSeen,
     Map<String, dynamic>? metadata,
     Role? role,
@@ -68,6 +72,7 @@ class User extends Equatable {
     return User(
       firstName: firstName,
       id: id,
+      email: email,
       imageUrl: imageUrl,
       lastName: lastName,
       lastSeen: lastSeen,
@@ -84,7 +89,7 @@ class User extends Equatable {
   /// Equatable props
   @override
   List<Object?> get props =>
-      [createdAt, firstName, id, imageUrl, lastName, lastSeen, metadata, role];
+      [createdAt, firstName, id, email, imageUrl, lastName, lastSeen, metadata, role];
 
   /// Created user timestamp, in ms
   final int? createdAt;
@@ -94,6 +99,8 @@ class User extends Equatable {
 
   /// Unique ID of the user
   final String id;
+
+  final String? email;
 
   /// Remote image URL representing user's avatar
   final String? imageUrl;
