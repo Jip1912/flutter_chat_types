@@ -11,24 +11,29 @@ class PartialPaymentRequest {
   const PartialPaymentRequest ({
     required this.amount,
     required this.paymentStatus,
-    required this.paymentUrl
+    required this.paymentUrl,
+    required this.paymentId
   });
 
   /// Creates a partial text message from a map (decoded JSON).
   PartialPaymentRequest.fromJson(Map<String, dynamic> json)
       : amount = json['amount'] as double,
         paymentStatus = json['paymentStatus'] as String,
-        paymentUrl = json['paymentUrl'] as String;
+        paymentUrl = json['paymentUrl'] as String,
+        paymentId = json['paymentId'] as String;
+
 
   /// Converts a partial text message to the map representation, encodable to JSON.
   Map<String, dynamic> toJson() => {
         'amount': amount,
         'paymentStatus': paymentStatus,
-        'paymentUrl': paymentUrl
+        'paymentUrl': paymentUrl,
+        'paymentId': paymentId
       };
 
   /// User's message
   final double amount;
   final String paymentStatus;
   final String paymentUrl;
+  final String paymentId;
 }

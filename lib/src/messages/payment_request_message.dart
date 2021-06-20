@@ -20,7 +20,8 @@ class PaymentRequestMessage extends Message {
     Status? status,
     required this.amount,
     required this.paymentStatus,
-    required this.paymentUrl
+    required this.paymentUrl,
+    required this.paymentId
 
   }) : super(
           author,
@@ -45,6 +46,7 @@ class PaymentRequestMessage extends Message {
         amount = partialPaymentRequest.amount,
         paymentStatus = partialPaymentRequest.paymentStatus,
         paymentUrl = partialPaymentRequest.paymentUrl,
+        paymentId = partialPaymentRequest.paymentId,
         super(
           author,
           createdAt,
@@ -63,6 +65,7 @@ class PaymentRequestMessage extends Message {
         amount = json['amount'] as double,
         paymentStatus = json['paymentStatus'] as String,
         paymentUrl = json['paymentUrl'] as String,
+        paymentId = json['paymentId'] as String,
         super(
           User.fromJson(json['author'] as Map<String, dynamic>),
           json['createdAt'] as int?,
@@ -86,6 +89,7 @@ class PaymentRequestMessage extends Message {
         'amount': amount,
         'paymentStatus': paymentStatus,
         'paymentUrl': paymentUrl,
+        'paymentId': paymentId,
         'type': MessageType.paymentRequest.toShortString(),
       };
 
@@ -102,6 +106,7 @@ class PaymentRequestMessage extends Message {
     double? amount,
     String? paymentStatus,
     String? paymentUrl,
+    String? paymentId,
     String? text,
   }) {
     return PaymentRequestMessage(
@@ -119,14 +124,15 @@ class PaymentRequestMessage extends Message {
       status: status ?? this.status,
       amount: amount ?? this.amount,
       paymentStatus: paymentStatus ?? this.paymentStatus,
-      paymentUrl: paymentUrl ?? this.paymentUrl
+      paymentUrl: paymentUrl ?? this.paymentUrl,
+      paymentId: paymentId ?? this.paymentId
     );
   }
 
   /// Equatable props
   @override
   List<Object?> get props =>
-      [author, createdAt, id, metadata, previewData, roomId, status, amount, paymentStatus, paymentUrl];
+      [author, createdAt, id, metadata, previewData, roomId, status, amount, paymentStatus, paymentUrl, paymentId];
 
   /// See [PreviewData]
   final PreviewData? previewData;
@@ -135,4 +141,5 @@ class PaymentRequestMessage extends Message {
   final double amount;
   final String paymentStatus;
   final String paymentUrl;
+  final String paymentId;
 }
