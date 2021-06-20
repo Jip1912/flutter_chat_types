@@ -10,7 +10,7 @@ import 'partial_text.dart';
 @immutable
 class PaymentRequestMessage extends Message {
   /// Creates a text message.
-  const PaymentRequestMessage({
+  PaymentRequestMessage({
     required User author,
     int? createdAt,
     required String id,
@@ -139,7 +139,7 @@ class PaymentRequestMessage extends Message {
 
   /// User's message
   final double amount;
-  final String paymentStatus;
+  String paymentStatus;
   final String paymentUrl;
   final String paymentId;
 }
