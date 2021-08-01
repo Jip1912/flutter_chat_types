@@ -1,6 +1,6 @@
 import 'message.dart' show Status;
 import 'room.dart' show RoomType;
-import 'user.dart' show Role;
+import 'user_old.dart' show Role;
 
 /// Converts [stringStatus] to the [Status] enum.
 Status? getStatusFromString(String? stringStatus) {

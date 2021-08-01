@@ -2,7 +2,8 @@ import 'package:flutter_chat_types/src/messages/partial_payment_request.dart';
 import 'package:meta/meta.dart';
 import '../message.dart';
 import '../preview_data.dart' show PreviewData;
-import '../user.dart' show User;
+import '../user.dart';
+import '../user_old.dart' show User;
 import '../util.dart' show getStatusFromString;
 import 'partial_text.dart';
 

@@ -1,119 +1,101 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'util.dart' show getRoleFromString;
 
-/// All possible roles user can have.
-enum Role { admin, agent, moderator, user }
 
-/// Extension with one [toShortString] method
-extension RoleToShortString on Role {
-  /// Converts enum to the string equal to enum's name
-  String toShortString() {
-    return toString().split('.').last;
-  }
-}
-
-/// A class that represents user.
+/// A class that represents User.
 @immutable
 class User extends Equatable {
-  /// Creates a user.
+  /// Creates a User.
   const User({
-    this.createdAt,
-    this.firstName,
+    this.aangemaaktOp,
+    this.naam,
+    this.leeftijd,
     required this.id,
-    this.email,
-    this.imageUrl,
-    this.lastName,
-    this.lastSeen,
+    this.telefoonnummer,
+    this.fotoUrl,
+    this.laatstGezien,
     this.metadata,
-    this.role,
   });
 
-  /// Creates user from a map (decoded JSON).
+  /// Creates User from a map (decoded JSON).
   User.fromJson(Map<String, dynamic> json)
-      : createdAt = json['createdAt'] as int?,
-        firstName = json['firstName'] as String?,
+      : aangemaaktOp = json['aangemaaktOp'] as int?,
+        naam = json['naam'] as String?,
+        leeftijd = json['leeftijd'] as int?,
         id = json['id'] as String,
-        email = json['email'] as String,
-        imageUrl = json['imageUrl'] as String?,
-        lastName = json['lastName'] as String?,
-        lastSeen = json['lastSeen'] as int?,
-        metadata = json['metadata'] as Map<String, dynamic>?,
-        role = getRoleFromString(json['role'] as String?);
+        telefoonnummer = json['telefoonnummer'] as String,
+        fotoUrl = json['fotoUrl'] as String?,
+        laatstGezien = json['laatstGezien'] as int?,
+        metadata = json['metadata'] as Map<String, dynamic>?;
 
-  /// Converts user to the map representation, encodable to JSON.
+  /// Converts User to the map representation, encodable to JSON.
   Map<String, dynamic> toJson() => {
-        'createdAt': createdAt,
-        'firstName': firstName,
+        'aangemaaktOp': aangemaaktOp,
+        'naam': naam,
+        'leeftijd': leeftijd,
         'id': id,
-        'email': email,
-        'imageUrl': imageUrl,
-        'lastName': lastName,
-        'lastSeen': lastSeen,
+        'telefoonnummer': telefoonnummer,
+        'fotoUrl': fotoUrl,
+        'laatstGezien': laatstGezien,
         'metadata': metadata,
-        'role': role?.toShortString(),
       };
 
-  /// Creates a copy of the user with an updated data.
-  /// [firstName], [imageUrl], [lastName], [lastSeen] and [role] with
+  /// Creates a copy of the User with an updated data.
+  /// [firstName], [imageUrl], [lastName], [laatstGezien] and [role] with
   /// null values will nullify existing values.
   /// [metadata] with null value will nullify existing metadata, otherwise
   /// both metadatas will be merged into one Map, where keys from a passed
   /// metadata will overwite keys from the previous one.
   User copyWith({
-    String? firstName,
-    String? imageUrl,
-    String? lastName,
-    String? email,
-    int? lastSeen,
+    int? aangemaaktOp,
+    String? naam,
+    int? leeftijd,
+    String? telefoonnummer,
+    String? fotoUrl,
+    int? laatstGezien,
     Map<String, dynamic>? metadata,
-    Role? role,
   }) {
     return User(
-      firstName: firstName,
+      aangemaaktOp: aangemaaktOp,
+      naam: naam,
+      leeftijd: leeftijd,
       id: id,
-      email: email,
-      imageUrl: imageUrl,
-      lastName: lastName,
-      lastSeen: lastSeen,
+      telefoonnummer: telefoonnummer,
+      fotoUrl: fotoUrl,
+      laatstGezien: laatstGezien,
       metadata: metadata == null
           ? null
           : {
               ...this.metadata ?? {},
               ...metadata,
             },
-      role: role,
     );
   }
 
   /// Equatable props
   @override
   List<Object?> get props =>
-      [createdAt, firstName, id, email, imageUrl, lastName, lastSeen, metadata, role];
+      [aangemaaktOp, naam, leeftijd, id, telefoonnummer, fotoUrl, laatstGezien, metadata];
 
-  /// Created user timestamp, in ms
-  final int? createdAt;
+  /// Created User timestamp, in ms
+  final int? aangemaaktOp;
 
-  /// First name of the user
-  final String? firstName;
+  /// First name of the User
+  final String? naam;
 
-  /// Unique ID of the user
+  final int? leeftijd;
+
+  /// Unique ID of the User
   final String id;
 
-  final String? email;
+  final String? telefoonnummer;
 
-  /// Remote image URL representing user's avatar
-  final String? imageUrl;
+  /// Remote image URL representing User's avatar
+  final String? fotoUrl;
 
-  /// Last name of the user
-  final String? lastName;
-
-  /// Timestamp when user was last visible, in ms
-  final int? lastSeen;
-
-  /// Additional custom metadata or attributes related to the user
+  /// Timestamp when User was last visible, in ms
+  final int? laatstGezien;
+  
+  /// Additional custom metadata or attributes related to the User
   final Map<String, dynamic>? metadata;
-
-  /// User [Role]
-  final Role? role;
 }

@@ -1,34 +1,29 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
 
 
 /// A class that represents Bijleszoeker.
 @immutable
-class Bijleszoeker extends Equatable {
+class Bijleszoeker extends User {
   /// Creates a Bijleszoeker.
   const Bijleszoeker({
-    this.aangemaaktOp,
-    this.naam,
-    this.leeftijd,
-    required this.id,
-    this.telefoonnummer,
-    this.fotoUrl,
-    this.laatstGezien,
-    this.schoolniveau,
-    this.metadata,
-  });
+    int? aangemaaktOp,
+    String? naam,
+    int? leeftijd,
+    required String id,
+    String? telefoonnummer,
+    String? fotoUrl,
+    int? laatstGezien,
+    Map<String, dynamic>? metadata,
+    this.schoolniveau
+  }) : super(aangemaaktOp: aangemaaktOp, naam: naam, leeftijd: leeftijd, id: id, telefoonnummer: telefoonnummer, 
+              fotoUrl: fotoUrl, laatstGezien: laatstGezien, metadata: metadata);
 
   /// Creates Bijleszoeker from a map (decoded JSON).
   Bijleszoeker.fromJson(Map<String, dynamic> json)
-      : aangemaaktOp = json['aangemaaktOp'] as int?,
-        naam = json['naam'] as String?,
-        leeftijd = json['leeftijd'] as int?,
-        id = json['id'] as String,
-        telefoonnummer = json['telefoonnummer'] as String,
-        fotoUrl = json['fotoUrl'] as String?,
-        laatstGezien = json['laatstGezien'] as int?,
-        schoolniveau = json['schoolniveau'] as String?,
-        metadata = json['metadata'] as Map<String, dynamic>?;
+      : schoolniveau = json['schoolniveau'] as String?,
+        super.fromJson(json);
 
   /// Converts Bijleszoeker to the map representation, encodable to JSON.
   Map<String, dynamic> toJson() => {
@@ -82,27 +77,5 @@ class Bijleszoeker extends Equatable {
   List<Object?> get props =>
       [aangemaaktOp, naam, leeftijd, id, telefoonnummer, fotoUrl, laatstGezien, schoolniveau, metadata];
 
-  /// Created Bijleszoeker timestamp, in ms
-  final int? aangemaaktOp;
-
-  /// First name of the Bijleszoeker
-  final String? naam;
-
-  final int? leeftijd;
-
-  /// Unique ID of the Bijleszoeker
-  final String id;
-
-  final String? telefoonnummer;
-
-  /// Remote image URL representing Bijleszoeker's avatar
-  final String? fotoUrl;
-
-  /// Timestamp when Bijleszoeker was last visible, in ms
-  final int? laatstGezien;
-  
   final String? schoolniveau;
-
-  /// Additional custom metadata or attributes related to the Bijleszoeker
-  final Map<String, dynamic>? metadata;
 }

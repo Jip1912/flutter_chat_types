@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
-import 'user.dart';
+import 'user_old.dart';
 import 'util.dart';
 
 /// All possible room types

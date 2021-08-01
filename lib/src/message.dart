@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_chat_types/src/messages/payment_request_message.dart';
+import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
 import 'messages/custom_message.dart';
 import 'messages/file_message.dart';
@@ -7,7 +8,7 @@ import 'messages/image_message.dart';
 import 'messages/text_message.dart';
 import 'messages/unsupported_message.dart';
 import 'preview_data.dart' show PreviewData;
-import 'user.dart' show User;
+import 'user_old.dart' show User;
 
 /// All possible message types.
 enum MessageType { custom, file, image, text, paymentRequest, unsupported }

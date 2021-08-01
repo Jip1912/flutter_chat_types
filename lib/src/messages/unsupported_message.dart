@@ -1,7 +1,8 @@
 import 'package:meta/meta.dart';
 import '../message.dart';
 import '../preview_data.dart' show PreviewData;
-import '../user.dart' show User;
+import '../user.dart';
+import '../user_old.dart' show User;
 import '../util.dart' show getStatusFromString;
 
 /// A class that represents unsupported message. Used for backwards
