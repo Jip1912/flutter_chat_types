@@ -7,13 +7,13 @@ import 'package:meta/meta.dart';
 class Bijlesgever extends User {
   /// Creates a Bijlesgever.
   const Bijlesgever({
-    int? aangemaaktOp,
+    DateTime? aangemaaktOp,
     String? naam,
     int? leeftijd,
     required String id,
     String? telefoonnummer,
     String? fotoUrl,
-    int? laatstGezien,
+    DateTime? laatstGezien,
     Map<String, dynamic>? metadata,
     this.vakken,
     this.uurloon,
@@ -52,12 +52,12 @@ class Bijlesgever extends User {
   /// metadata will overwite keys from the previous one.
   @override
   Bijlesgever copyWith({
-    int? aangemaaktOp,
+    DateTime? aangemaaktOp,
     String? naam,
     int? leeftijd,
     String? telefoonnummer,
     String? fotoUrl,
-    int? laatstGezien,
+    DateTime? laatstGezien,
     List<String>? vakken,
     int? uurloon,
     String? beschrijving,

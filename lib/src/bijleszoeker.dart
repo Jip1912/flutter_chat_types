@@ -8,13 +8,13 @@ import 'package:meta/meta.dart';
 class Bijleszoeker extends User {
   /// Creates a Bijleszoeker.
   const Bijleszoeker({
-    int? aangemaaktOp,
+    DateTime? aangemaaktOp,
     String? naam,
     int? leeftijd,
     required String id,
     String? telefoonnummer,
     String? fotoUrl,
-    int? laatstGezien,
+    DateTime? laatstGezien,
     Map<String, dynamic>? metadata,
     this.schoolniveau
   }) : super(aangemaaktOp: aangemaaktOp, naam: naam, leeftijd: leeftijd, id: id, telefoonnummer: telefoonnummer, 
@@ -45,12 +45,12 @@ class Bijleszoeker extends User {
   /// both metadatas will be merged into one Map, where keys from a passed
   /// metadata will overwite keys from the previous one.
   Bijleszoeker copyWith({
-    int? aangemaaktOp,
+    DateTime? aangemaaktOp,
     String? naam,
     int? leeftijd,
     String? telefoonnummer,
     String? fotoUrl,
-    int? laatstGezien,
+    DateTime? laatstGezien,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {

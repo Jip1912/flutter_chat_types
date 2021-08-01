@@ -19,13 +19,13 @@ class User extends Equatable {
 
   /// Creates User from a map (decoded JSON).
   User.fromJson(Map<String, dynamic> json)
-      : aangemaaktOp = json['aangemaaktOp'] as int?,
+      : aangemaaktOp = json['aangemaaktOp'] as DateTime?,
         naam = json['naam'] as String?,
         leeftijd = json['leeftijd'] as int?,
         id = json['id'] as String,
         telefoonnummer = json['telefoonnummer'] as String,
         fotoUrl = json['fotoUrl'] as String?,
-        laatstGezien = json['laatstGezien'] as int?,
+        laatstGezien = json['laatstGezien'] as DateTime?,
         metadata = json['metadata'] as Map<String, dynamic>?;
 
   /// Converts User to the map representation, encodable to JSON.
@@ -47,12 +47,12 @@ class User extends Equatable {
   /// both metadatas will be merged into one Map, where keys from a passed
   /// metadata will overwite keys from the previous one.
   User copyWith({
-    int? aangemaaktOp,
+    DateTime? aangemaaktOp,
     String? naam,
     int? leeftijd,
     String? telefoonnummer,
     String? fotoUrl,
-    int? laatstGezien,
+    DateTime? laatstGezien,
     Map<String, dynamic>? metadata,
   }) {
     return User(
@@ -78,7 +78,7 @@ class User extends Equatable {
       [aangemaaktOp, naam, leeftijd, id, telefoonnummer, fotoUrl, laatstGezien, metadata];
 
   /// Created User timestamp, in ms
-  final int? aangemaaktOp;
+  final DateTime? aangemaaktOp;
 
   /// First name of the User
   final String? naam;
@@ -94,7 +94,7 @@ class User extends Equatable {
   final String? fotoUrl;
 
   /// Timestamp when User was last visible, in ms
-  final int? laatstGezien;
+  final DateTime? laatstGezien;
   
   /// Additional custom metadata or attributes related to the User
   final Map<String, dynamic>? metadata;
