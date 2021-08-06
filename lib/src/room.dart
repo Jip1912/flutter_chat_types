@@ -31,7 +31,7 @@ class Room extends Equatable {
 
   /// Creates room from a map (decoded JSON).
   Room.fromJson(Map<String, dynamic> json)
-      : createdAt = json['createdAt'] as int?,
+      : createdAt = json['createdAt'] as DateTime?,
         id = json['id'] as String,
         imageUrl = json['imageUrl'] as String?,
         metadata = json['metadata'] as Map<String, dynamic>?,
@@ -86,7 +86,7 @@ class Room extends Equatable {
       [createdAt, id, imageUrl, metadata, name, type, users];
 
   /// Created room timestamp, in ms
-  final int? createdAt;
+  final DateTime? createdAt;
 
   /// Room's unique ID
   final String id;
