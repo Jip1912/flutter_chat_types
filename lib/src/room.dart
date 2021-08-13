@@ -9,7 +9,7 @@ enum RoomType { channel, direct, group, unsupported }
 
 /// Extension with one [toShortString] method
 extension RoomTypeToShortString on RoomType {
-  /// Converts enum to the string equal to enum's name
+  /// Converts enum to the string equal to enum's naam
   String toShortString() {
     return toString().split('.').last;
   }
@@ -20,80 +20,80 @@ extension RoomTypeToShortString on RoomType {
 class Room extends Equatable {
   /// Creates a [Room]
   const Room({
-    this.createdAt,
+    this.aangemaaktOp,
     required this.id,
-    this.imageUrl,
+    this.fotoUrl,
     this.metadata,
-    this.name,
+    this.naam,
     required this.type,
-    required this.users,
+    required this.gebruikers,
   });
 
   /// Creates room from a map (decoded JSON).
   Room.fromJson(Map<String, dynamic> json)
-      : createdAt = json['createdAt'] as DateTime?,
+      : aangemaaktOp = json['aangemaaktOp'] as DateTime?,
         id = json['id'] as String,
-        imageUrl = json['imageUrl'] as String?,
+        fotoUrl = json['fotoUrl'] as String?,
         metadata = json['metadata'] as Map<String, dynamic>?,
-        name = json['name'] as String?,
+        naam = json['naam'] as String?,
         type = getRoomTypeFromString(json['type'] as String),
-        users = (json['users'] as List<Map<String, dynamic>>)
+        gebruikers = (json['gebruikers'] as List<Map<String, dynamic>>)
             .map((e) => User.fromJson(e))
             .toList();
 
   /// Converts room to the map representation, encodable to JSON.
   Map<String, dynamic> toJson() => {
-        'createdAt': createdAt,
+        'aangemaaktOp': aangemaaktOp,
         'id': id,
-        'imageUrl': imageUrl,
+        'fotoUrl': fotoUrl,
         'metadata': metadata,
-        'name': name,
+        'naam': naam,
         'type': type.toShortString(),
-        'users': users.map((e) => e.toJson()).toList(),
+        'gebruikers': gebruikers.map((e) => e.toJson()).toList(),
       };
 
   /// Creates a copy of the room with an updated data.
-  /// [imageUrl] and [name] with null values will nullify existing values
+  /// [fotoUrl] and [naam] with null values will nullify existing values
   /// [metadata] with null value will nullify existing metadata, otherwise
   /// both metadatas will be merged into one Map, where keys from a passed
   /// metadata will overwite keys from the previous one.
-  /// [type] and [users] with null values will be overwritten by previous values.
+  /// [type] and [gebruikers] with null values will be overwritten by previous values.
   Room copyWith({
-    String? imageUrl,
+    String? fotoUrl,
     Map<String, dynamic>? metadata,
-    String? name,
+    String? naam,
     RoomType? type,
-    List<User>? users,
+    List<User>? gebruikers,
   }) {
     return Room(
       id: id,
-      imageUrl: imageUrl,
+      fotoUrl: fotoUrl,
       metadata: metadata == null
           ? null
           : {
               ...this.metadata ?? {},
               ...metadata,
             },
-      name: name,
+      naam: naam,
       type: type ?? this.type,
-      users: users ?? this.users,
+      gebruikers: gebruikers ?? this.gebruikers,
     );
   }
 
   /// Equatable props
   @override
   List<Object?> get props =>
-      [createdAt, id, imageUrl, metadata, name, type, users];
+      [aangemaaktOp, id, fotoUrl, metadata, naam, type, gebruikers];
 
   /// Created room timestamp, in ms
-  final DateTime? createdAt;
+  final DateTime? aangemaaktOp;
 
   /// Room's unique ID
   final String id;
 
-  /// Room's image. In case of the [RoomType.direct] - avatar of the second person,
-  /// otherwise a custom image [RoomType.group].
-  final String? imageUrl;
+  /// Room's foto. In case of the [RoomType.direct] - avatar of the second person,
+  /// otherwise a custom foto [RoomType.group].
+  final String? fotoUrl;
 
   /// [RoomType]
   final RoomType type;
@@ -101,10 +101,10 @@ class Room extends Equatable {
   /// Additional custom metadata or attributes related to the room
   final Map<String, dynamic>? metadata;
 
-  /// Room's name. In case of the [RoomType.direct] - name of the second person,
-  /// otherwise a custom name [RoomType.group].
-  final String? name;
+  /// Room's naam. In case of the [RoomType.direct] - naam of the second person,
+  /// otherwise a custom naam [RoomType.group].
+  final String? naam;
 
-  /// List of users which are in the room
-  final List<User> users;
+  /// List of gebruikers which are in the room
+  final List<User> gebruikers;
 }
