@@ -2,23 +2,31 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
 
-
 /// A class that represents Bijleszoeker.
 @immutable
 class Bijleszoeker extends User {
   /// Creates a Bijleszoeker.
-  const Bijleszoeker({
-    DateTime? aangemaaktOp,
-    String? naam,
-    int? leeftijd,
-    required String id,
-    String? telefoonnummer,
-    String? fotoUrl,
-    DateTime? laatstGezien,
-    Map<String, dynamic>? metadata,
-    this.schoolniveau
-  }) : super(aangemaaktOp: aangemaaktOp, naam: naam, leeftijd: leeftijd, id: id, telefoonnummer: telefoonnummer, 
-              fotoUrl: fotoUrl, laatstGezien: laatstGezien, metadata: metadata);
+  const Bijleszoeker(
+      {DateTime? aangemaaktOp,
+      String? naam,
+      int? leeftijd,
+      required String id,
+      String? telefoonnummer,
+      String? fotoUrl,
+      DateTime? laatstGezien,
+      dynamic fcm,
+      Map<String, dynamic>? metadata,
+      this.schoolniveau})
+      : super(
+            aangemaaktOp: aangemaaktOp,
+            naam: naam,
+            leeftijd: leeftijd,
+            id: id,
+            telefoonnummer: telefoonnummer,
+            fotoUrl: fotoUrl,
+            laatstGezien: laatstGezien,
+            fcm: fcm,
+            metadata: metadata);
 
   /// Creates Bijleszoeker from a map (decoded JSON).
   Bijleszoeker.fromJson(Map<String, dynamic> json)
@@ -34,6 +42,7 @@ class Bijleszoeker extends User {
         'telefoonnummer': telefoonnummer,
         'fotoUrl': fotoUrl,
         'laatstGezien': laatstGezien,
+        'fcm': fcm,
         'schoolniveau': schoolniveau,
         'metadata': metadata,
       };
@@ -51,6 +60,7 @@ class Bijleszoeker extends User {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
+    dynamic fcm,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {
@@ -62,6 +72,7 @@ class Bijleszoeker extends User {
       telefoonnummer: telefoonnummer,
       fotoUrl: fotoUrl,
       laatstGezien: laatstGezien,
+      fcm: fcm,
       schoolniveau: schoolniveau,
       metadata: metadata == null
           ? null
@@ -74,8 +85,18 @@ class Bijleszoeker extends User {
 
   /// Equatable props
   @override
-  List<Object?> get props =>
-      [aangemaaktOp, naam, leeftijd, id, telefoonnummer, fotoUrl, laatstGezien, schoolniveau, metadata];
+  List<Object?> get props => [
+        aangemaaktOp,
+        naam,
+        leeftijd,
+        id,
+        telefoonnummer,
+        fotoUrl,
+        laatstGezien,
+        fcm,
+        schoolniveau,
+        metadata
+      ];
 
   final String? schoolniveau;
 }

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-
 /// A class that represents User.
 @immutable
 class User extends Equatable {
@@ -14,6 +13,7 @@ class User extends Equatable {
     this.telefoonnummer,
     this.fotoUrl,
     this.laatstGezien,
+    this.fcm,
     this.metadata,
   });
 
@@ -26,6 +26,7 @@ class User extends Equatable {
         telefoonnummer = json['telefoonnummer'] as String,
         fotoUrl = json['fotoUrl'] as String?,
         laatstGezien = json['laatstGezien'] as DateTime?,
+        fcm = json['fcm'] as dynamic,
         metadata = json['metadata'] as Map<String, dynamic>?;
 
   /// Converts User to the map representation, encodable to JSON.
@@ -37,6 +38,7 @@ class User extends Equatable {
         'telefoonnummer': telefoonnummer,
         'fotoUrl': fotoUrl,
         'laatstGezien': laatstGezien,
+        'fcm': fcm,
         'metadata': metadata,
       };
 
@@ -53,6 +55,7 @@ class User extends Equatable {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
+    dynamic fcm,
     Map<String, dynamic>? metadata,
   }) {
     return User(
@@ -63,6 +66,7 @@ class User extends Equatable {
       telefoonnummer: telefoonnummer,
       fotoUrl: fotoUrl,
       laatstGezien: laatstGezien,
+      fcm: fcm,
       metadata: metadata == null
           ? null
           : {
@@ -74,8 +78,17 @@ class User extends Equatable {
 
   /// Equatable props
   @override
-  List<Object?> get props =>
-      [aangemaaktOp, naam, leeftijd, id, telefoonnummer, fotoUrl, laatstGezien, metadata];
+  List<Object?> get props => [
+        aangemaaktOp,
+        naam,
+        leeftijd,
+        id,
+        telefoonnummer,
+        fotoUrl,
+        laatstGezien,
+        fcm,
+        metadata
+      ];
 
   /// Created User timestamp, in ms
   final DateTime? aangemaaktOp;
@@ -95,7 +108,10 @@ class User extends Equatable {
 
   /// Timestamp when User was last visible, in ms
   final DateTime? laatstGezien;
-  
+
+  //Firebase Cloud Messaging information
+  final dynamic fcm;
+
   /// Additional custom metadata or attributes related to the User
   final Map<String, dynamic>? metadata;
 }
