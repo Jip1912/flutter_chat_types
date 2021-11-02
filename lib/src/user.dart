@@ -26,7 +26,7 @@ class User extends Equatable {
         telefoonnummer = json['telefoonnummer'] as String,
         fotoUrl = json['fotoUrl'] as String?,
         laatstGezien = json['laatstGezien'] as DateTime?,
-        fcm = json['fcm'] as Set<dynamic>?,
+        fcm = json['fcm'] as Map<String, DateTime>?,
         metadata = json['metadata'] as Map<String, dynamic>?;
 
   /// Converts User to the map representation, encodable to JSON.
@@ -55,7 +55,7 @@ class User extends Equatable {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
-    Set<dynamic>? fcm,
+    Map<String, DateTime>? fcm,
     Map<String, dynamic>? metadata,
   }) {
     return User(
@@ -110,7 +110,7 @@ class User extends Equatable {
   final DateTime? laatstGezien;
 
   //Firebase Cloud Messaging information
-  final Set<dynamic>? fcm;
+  final Map<String, DateTime>? fcm;
 
   /// Additional custom metadata or attributes related to the User
   final Map<String, dynamic>? metadata;

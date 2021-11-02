@@ -14,7 +14,7 @@ class Bijleszoeker extends User {
       String? telefoonnummer,
       String? fotoUrl,
       DateTime? laatstGezien,
-      Set<dynamic>? fcm,
+      Map<String, DateTime>? fcm,
       Map<String, dynamic>? metadata,
       this.schoolniveau})
       : super(
@@ -60,7 +60,7 @@ class Bijleszoeker extends User {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
-    Set<dynamic>? fcm,
+    Map<String, DateTime>? fcm,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {
