@@ -13,6 +13,7 @@ class User extends Equatable {
     this.telefoonnummer,
     this.fotoUrl,
     this.laatstGezien,
+    this.isBijlesgever,
     this.fcm,
     this.metadata,
   });
@@ -26,6 +27,7 @@ class User extends Equatable {
         telefoonnummer = json['telefoonnummer'] as String,
         fotoUrl = json['fotoUrl'] as String?,
         laatstGezien = json['laatstGezien'] as DateTime?,
+        isBijlesgever = json['isBijlesgever'] as bool?,
         fcm = json['fcm'] as Map<String, DateTime>?,
         metadata = json['metadata'] as Map<String, dynamic>?;
 
@@ -38,6 +40,7 @@ class User extends Equatable {
         'telefoonnummer': telefoonnummer,
         'fotoUrl': fotoUrl,
         'laatstGezien': laatstGezien,
+        'isBijlesgever': isBijlesgever,
         'fcm': fcm,
         'metadata': metadata,
       };
@@ -55,6 +58,7 @@ class User extends Equatable {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
+    bool? isBijlesgever,
     Map<String, DateTime>? fcm,
     Map<String, dynamic>? metadata,
   }) {
@@ -66,6 +70,7 @@ class User extends Equatable {
       telefoonnummer: telefoonnummer,
       fotoUrl: fotoUrl,
       laatstGezien: laatstGezien,
+      isBijlesgever: isBijlesgever,
       fcm: fcm,
       metadata: metadata == null
           ? null
@@ -86,6 +91,7 @@ class User extends Equatable {
         telefoonnummer,
         fotoUrl,
         laatstGezien,
+        isBijlesgever,
         fcm,
         metadata
       ];
@@ -108,6 +114,8 @@ class User extends Equatable {
 
   /// Timestamp when User was last visible, in ms
   final DateTime? laatstGezien;
+
+  final bool? isBijlesgever;
 
   //Firebase Cloud Messaging information
   final Map<String, DateTime>? fcm;

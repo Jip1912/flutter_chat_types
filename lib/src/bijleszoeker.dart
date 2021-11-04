@@ -14,6 +14,7 @@ class Bijleszoeker extends User {
       String? telefoonnummer,
       String? fotoUrl,
       DateTime? laatstGezien,
+      bool? isBijlesgever,
       Map<String, DateTime>? fcm,
       Map<String, dynamic>? metadata,
       this.schoolniveau})
@@ -25,6 +26,7 @@ class Bijleszoeker extends User {
             telefoonnummer: telefoonnummer,
             fotoUrl: fotoUrl,
             laatstGezien: laatstGezien,
+            isBijlesgever: isBijlesgever,
             fcm: fcm,
             metadata: metadata);
 
@@ -42,6 +44,7 @@ class Bijleszoeker extends User {
         'telefoonnummer': telefoonnummer,
         'fotoUrl': fotoUrl,
         'laatstGezien': laatstGezien,
+        'isBijlesgever': isBijlesgever,
         'fcm': fcm,
         'schoolniveau': schoolniveau,
         'metadata': metadata,
@@ -60,6 +63,7 @@ class Bijleszoeker extends User {
     String? telefoonnummer,
     String? fotoUrl,
     DateTime? laatstGezien,
+    bool? isBijlesgever,
     Map<String, DateTime>? fcm,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
@@ -72,6 +76,7 @@ class Bijleszoeker extends User {
       telefoonnummer: telefoonnummer,
       fotoUrl: fotoUrl,
       laatstGezien: laatstGezien,
+      isBijlesgever: isBijlesgever,
       fcm: fcm,
       schoolniveau: schoolniveau,
       metadata: metadata == null
@@ -93,6 +98,7 @@ class Bijleszoeker extends User {
         telefoonnummer,
         fotoUrl,
         laatstGezien,
+        isBijlesgever,
         fcm,
         schoolniveau,
         metadata
