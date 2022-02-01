@@ -42,7 +42,7 @@ class Bijlesgever extends User {
         uurloon = json['uurloon'] as int?,
         beschrijving = json['beschrijving'] as String,
         locatie = json['locatie'] as GeoPoint?,
-        radius = json['radius'] as int?,
+        radius = json['radius'] as double?,
         super.fromJson(json);
 
   /// Converts Bijlesgever to the map representation, encodable to JSON.
@@ -85,7 +85,7 @@ class Bijlesgever extends User {
     int? uurloon,
     String? beschrijving,
     GeoPoint? locatie,
-    int? radius,
+    double? radius,
     Map<String, dynamic>? metadata,
   }) {
     return Bijlesgever(
@@ -140,5 +140,5 @@ class Bijlesgever extends User {
 
   final GeoPoint? locatie;
 
-  final int? radius;
+  final double? radius;
 }

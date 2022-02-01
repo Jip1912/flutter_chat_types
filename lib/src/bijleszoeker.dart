@@ -18,7 +18,7 @@ class Bijleszoeker extends User {
       bool? isBijlesgever,
       Map<String, DateTime>? fcm,
       GeoPoint? locatie,
-      int? radius,
+      double? radius,
       Map<String, dynamic>? metadata,
       this.schoolniveau})
       : super(
@@ -73,7 +73,7 @@ class Bijleszoeker extends User {
     bool? isBijlesgever,
     Map<String, DateTime>? fcm,
     GeoPoint? locatie,
-    int? radius,
+    double? radius,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {
