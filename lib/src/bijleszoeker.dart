@@ -17,8 +17,6 @@ class Bijleszoeker extends User {
       DateTime? laatstGezien,
       bool? isBijlesgever,
       Map<String, DateTime>? fcm,
-      GeoPoint? locatie,
-      double? radius,
       Map<String, dynamic>? metadata,
       this.schoolniveau})
       : super(
@@ -31,8 +29,6 @@ class Bijleszoeker extends User {
             laatstGezien: laatstGezien,
             isBijlesgever: isBijlesgever,
             fcm: fcm,
-            locatie: locatie,
-            radius: radius,
             metadata: metadata);
 
   /// Creates Bijleszoeker from a map (decoded JSON).
@@ -51,8 +47,6 @@ class Bijleszoeker extends User {
         'laatstGezien': laatstGezien,
         'isBijlesgever': isBijlesgever,
         'fcm': fcm,
-        'locatie': locatie,
-        'radius': radius,
         'schoolniveau': schoolniveau,
         'metadata': metadata,
       };
@@ -72,8 +66,6 @@ class Bijleszoeker extends User {
     DateTime? laatstGezien,
     bool? isBijlesgever,
     Map<String, DateTime>? fcm,
-    GeoPoint? locatie,
-    double? radius,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {
@@ -87,8 +79,6 @@ class Bijleszoeker extends User {
       laatstGezien: laatstGezien,
       isBijlesgever: isBijlesgever,
       fcm: fcm,
-      locatie: locatie,
-      radius: radius,
       schoolniveau: schoolniveau,
       metadata: metadata == null
           ? null
@@ -111,8 +101,6 @@ class Bijleszoeker extends User {
         laatstGezien,
         isBijlesgever,
         fcm,
-        locatie,
-        radius,
         schoolniveau,
         metadata
       ];

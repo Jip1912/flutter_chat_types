@@ -16,8 +16,6 @@ class User extends Equatable {
     this.laatstGezien,
     this.isBijlesgever,
     this.fcm,
-    this.locatie,
-    this.radius,
     this.metadata,
   });
 
@@ -32,8 +30,6 @@ class User extends Equatable {
         laatstGezien = json['laatstGezien'] as DateTime?,
         isBijlesgever = json['isBijlesgever'] as bool?,
         fcm = json['fcm'] as Map<String, DateTime>?,
-        locatie = json['locatie']['geopoint'] as GeoPoint?,
-        radius = json['radius'] as double?,
         metadata = json['metadata'] as Map<String, dynamic>?;
 
   /// Converts User to the map representation, encodable to JSON.
@@ -47,8 +43,6 @@ class User extends Equatable {
         'laatstGezien': laatstGezien,
         'isBijlesgever': isBijlesgever,
         'fcm': fcm,
-        'locatie': locatie,
-        'radius': radius,
         'metadata': metadata,
       };
 
@@ -67,8 +61,6 @@ class User extends Equatable {
     DateTime? laatstGezien,
     bool? isBijlesgever,
     Map<String, DateTime>? fcm,
-    GeoPoint? locatie,
-    double? radius,
     Map<String, dynamic>? metadata,
   }) {
     return User(
@@ -81,8 +73,6 @@ class User extends Equatable {
       laatstGezien: laatstGezien,
       isBijlesgever: isBijlesgever,
       fcm: fcm,
-      locatie: locatie,
-      radius: radius,
       metadata: metadata == null
           ? null
           : {
@@ -104,8 +94,6 @@ class User extends Equatable {
         laatstGezien,
         isBijlesgever,
         fcm,
-        locatie,
-        radius,
         metadata
       ];
 
@@ -129,10 +117,6 @@ class User extends Equatable {
   final DateTime? laatstGezien;
 
   final bool? isBijlesgever;
-
-  final GeoPoint? locatie;
-
-  final double? radius;
 
   //Firebase Cloud Messaging information
   final Map<String, DateTime>? fcm;

@@ -32,8 +32,6 @@ class Bijlesgever extends User {
             laatstGezien: laatstGezien,
             isBijlesgever: isBijlesgever,
             fcm: fcm,
-            locatie: locatie,
-            radius: radius,
             metadata: metadata);
 
   /// Creates Bijlesgever from a map (decoded JSON).
@@ -41,7 +39,7 @@ class Bijlesgever extends User {
       : vakken = json['vakken'] as List<String>?,
         uurloon = json['uurloon'] as int?,
         beschrijving = json['beschrijving'] as String,
-        locatie = json['locatie'] as GeoPoint?,
+        locatie = json['locatie'] as dynamic,
         radius = json['radius'] as double?,
         super.fromJson(json);
 
@@ -84,7 +82,7 @@ class Bijlesgever extends User {
     List<String>? vakken,
     int? uurloon,
     String? beschrijving,
-    GeoPoint? locatie,
+    dynamic locatie,
     double? radius,
     Map<String, dynamic>? metadata,
   }) {
@@ -138,7 +136,7 @@ class Bijlesgever extends User {
 
   final String? beschrijving;
 
-  final GeoPoint? locatie;
+  final dynamic? locatie;
 
   final double? radius;
 }
