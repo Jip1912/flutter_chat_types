@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
@@ -16,6 +17,8 @@ class Bijleszoeker extends User {
       DateTime? laatstGezien,
       bool? isBijlesgever,
       Map<String, DateTime>? fcm,
+      GeoPoint? locatie,
+      int? radius,
       Map<String, dynamic>? metadata,
       this.schoolniveau})
       : super(
@@ -28,6 +31,8 @@ class Bijleszoeker extends User {
             laatstGezien: laatstGezien,
             isBijlesgever: isBijlesgever,
             fcm: fcm,
+            locatie: locatie,
+            radius: radius,
             metadata: metadata);
 
   /// Creates Bijleszoeker from a map (decoded JSON).
@@ -46,6 +51,8 @@ class Bijleszoeker extends User {
         'laatstGezien': laatstGezien,
         'isBijlesgever': isBijlesgever,
         'fcm': fcm,
+        'locatie': locatie,
+        'radius': radius,
         'schoolniveau': schoolniveau,
         'metadata': metadata,
       };
@@ -65,6 +72,8 @@ class Bijleszoeker extends User {
     DateTime? laatstGezien,
     bool? isBijlesgever,
     Map<String, DateTime>? fcm,
+    GeoPoint? locatie,
+    int? radius,
     String? schoolniveau,
     Map<String, dynamic>? metadata,
   }) {
@@ -78,6 +87,8 @@ class Bijleszoeker extends User {
       laatstGezien: laatstGezien,
       isBijlesgever: isBijlesgever,
       fcm: fcm,
+      locatie: locatie,
+      radius: radius,
       schoolniveau: schoolniveau,
       metadata: metadata == null
           ? null
@@ -100,6 +111,8 @@ class Bijleszoeker extends User {
         laatstGezien,
         isBijlesgever,
         fcm,
+        locatie,
+        radius,
         schoolniveau,
         metadata
       ];

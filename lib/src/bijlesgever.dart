@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_chat_types/src/user.dart';
 import 'package:meta/meta.dart';
 
@@ -19,7 +20,7 @@ class Bijlesgever extends User {
       this.vakken,
       this.uurloon,
       this.beschrijving,
-      this.location,
+      this.locatie,
       this.radius})
       : super(
             aangemaaktOp: aangemaaktOp,
@@ -31,6 +32,8 @@ class Bijlesgever extends User {
             laatstGezien: laatstGezien,
             isBijlesgever: isBijlesgever,
             fcm: fcm,
+            locatie: locatie,
+            radius: radius,
             metadata: metadata);
 
   /// Creates Bijlesgever from a map (decoded JSON).
@@ -38,8 +41,8 @@ class Bijlesgever extends User {
       : vakken = json['vakken'] as List<String>?,
         uurloon = json['uurloon'] as int?,
         beschrijving = json['beschrijving'] as String,
-        location = json['location'] as dynamic,
-        radius = json['radius'] as double,
+        locatie = json['locatie'] as GeoPoint?,
+        radius = json['radius'] as int?,
         super.fromJson(json);
 
   /// Converts Bijlesgever to the map representation, encodable to JSON.
@@ -57,7 +60,7 @@ class Bijlesgever extends User {
         'vakken': vakken,
         'uurloon': uurloon,
         'beschrijving': beschrijving,
-        'location': location,
+        'locatie': locatie,
         'radius': radius,
         'metadata': metadata,
       };
@@ -81,8 +84,8 @@ class Bijlesgever extends User {
     List<String>? vakken,
     int? uurloon,
     String? beschrijving,
-    dynamic location,
-    double? radius,
+    GeoPoint? locatie,
+    int? radius,
     Map<String, dynamic>? metadata,
   }) {
     return Bijlesgever(
@@ -98,7 +101,7 @@ class Bijlesgever extends User {
       vakken: vakken,
       uurloon: uurloon,
       beschrijving: beschrijving,
-      location: location,
+      locatie: locatie,
       radius: radius,
       metadata: metadata == null
           ? null
@@ -124,7 +127,7 @@ class Bijlesgever extends User {
         vakken,
         uurloon,
         beschrijving,
-        location,
+        locatie,
         radius,
         metadata
       ];
@@ -135,7 +138,7 @@ class Bijlesgever extends User {
 
   final String? beschrijving;
 
-  final dynamic location;
+  final GeoPoint? locatie;
 
-  final double? radius;
+  final int? radius;
 }
